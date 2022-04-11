@@ -1,0 +1,3 @@
+(function($) {
+  // Code Here
+})(jQuery);
