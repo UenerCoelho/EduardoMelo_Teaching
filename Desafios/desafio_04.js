@@ -64,45 +64,43 @@ var factory = (function() {
   }
   return {
 
-
-/*
+/* 02.1 -
   Crie um método chamado `mudarCor` que mude a cor do carro conforme a cor passado por parâmetro.
 */
     changeColor : function(color) {
-      color = color;
-      return color;
+      car.color = color;
+      return car.color;
     },
 
-
-/*
+/* 02.2 -
   Crie um método chamado `obterCor`, que retorne a cor do carro.
 */
     getColor : function(){
       return car.color;
     },
 
-/*
+/* 02.3 -
   Crie um método chamado `obterModelo` que retorne o modelo do carro.
 */
     getModel : function() {
       return car.model;
     },
 
-/*
+/* 02.4 -
   Crie um método chamado `obterMarca` que retorne a marca do carro.
 */
     getBrand : function() {
       return car.brand;
     },
 
-/*
+/* 02.5 -
   Crie um método chamado `obterMarcaModelo`, que retorne: "Esse carro é um [MARCA] [MODELO]" Para retornar os valores de marca e modelo, utilize os métodos criados.
 */
     getBrandModel : () => {
       return ('Esse carro é um ' + car.brand + ' ' + car.model + '.');
-    }
+    },
 
-/*
+/* 02.6 -
   Crie um método que irá adicionar pessoas no carro. Esse método terá as
   seguintes características:
   - Ele deverá receber por parâmetro o número de pessoas entrarão no carro. Esse número não precisa encher o carro, você poderá acrescentar as pessoas aos poucos.
@@ -111,11 +109,23 @@ var factory = (function() {
   - Se ainda houverem lugares no carro, mas a quantidade de pessoas passadas por parâmetro for ultrapassar o limite de assentos do carro, então você deve mostrar quantos assentos ainda podem ser ocupados, com a frase: "Só cabem mais [QUANTIDADE_DE_PESSOAS_QUE_CABEM] pessoas!"
   - Se couber somente mais uma pessoa, mostrar a palavra "pessoa" no retorno citado acima, no lugar de "pessoas".
 */
-
+    addPerson : function(value) {
+      for (car.lotation  = value; car.lotation  <=5 ; car.lotation ++) {
+        if (car.lotation > 1){
+          return ('Agora tem ' + car.lotation + ' pessoas dentro do carro.')
+        }else if (car.lotation = 5){
+          return ('O carro esta lotado.')
+        }else if(car.lotation > 5){
+          return ('Quantidade Inválida, no carro só cabem 5 pessoas!')
+        }
+        break;
+      }
+    }
 
 }
 }())
 
+factory.addPerson(2)//'Agora tem 2 pessoas dentro do carro.'
 /*
   Agora vamos verificar algumas informações do carro. Para as respostas abaixo, utilize sempre o formato de invocação do método (ou chamada da propriedade), adicionando comentários _inline_ ao lado com o valor retornado, se o método retornar algum valor.
 
@@ -139,18 +149,19 @@ console.log('A cor do carro agora é: ' + factory.changeColor('Moss Green'))
 console.log(factory.getBrandModel())
 
 // Adicione 2 pessoas no carro.
-
+factory.addPerson(2)//'Agora tem 2 pessoas dentro do carro.'
 
 // Adicione mais 4 pessoas no carro.
-
+factory.addPerson(4)//'Agora tem 4 pessoas dentro do carro.'
 
 // Faça o carro encher.
-
+factory.addPerson(5)//'Agora tem 2 pessoas dentro do carro.'
 
 // Tire 4 pessoas do carro.
-
+factory.addPerson(-4)//'Agora tem 2 pessoas dentro do carro.'
 
 // Adicione 10 pessoas no carro.
-
+factory.addPerson(10)//'Quantidade Inválida, no carro só cabem 5 pessoas!'
 
 // Quantas pessoas temos no carro?
+factory.addPerson(10)//'Quantidade Inválida, no carro só cabem 5 pessoas!'
