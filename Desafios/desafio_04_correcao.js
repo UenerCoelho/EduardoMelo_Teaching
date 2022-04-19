@@ -1,4 +1,4 @@
-var carro = {
+var car = {
   brand: 'Wolksvagem',
   model: 'Golf',
   plate: '1R0-NM4N',
@@ -6,38 +6,57 @@ var carro = {
   color: 'Green',
   howManyDoors: 5,
   seats: 5,
-  lotation: 0
+  lotation: 0,
+  changeColor: changeColor,
+  getColor: getColor,
+  getBrand: getBrand,
+  getModel: getModel,
+  getBrandModel: getBrandModel,
+  addPerson: addPerson,
+  resetCar: resetCar
 };
 
-car.changeColor = function (paramCor) {
-  this.cor = paramCor;
-},
+function changeColor(newColor) {
+  this.color = newColor;
+};
 
-car.getColor = function () {
+function getColor() {
   return this.color;
-},
+};
 
-car.getBrand = function () {
+function getBrand() {
   return this.brand;
-},
+};
 
-car.getModel = function () {
+function getModel() {
   return this.model;
-},
+};
 
-car.getBrandModel = function() {
-  return ('Esse carro é um ' concat(car.brand())  concat(' ') concat(car.model()) '.');
-},
+function getBrandModel() {
+  return ('Esse carro é um '.concat(car.getBrand()).concat(' ').concat(car.getModel()).concat('.'));
+};
 
-car.addPerson = function (person) {
-  if ((person + this.lotation) > this.seats && (this.seats - this.lotation) > 0){
-    return 'Só cabem '.concat(this.seats - this.lotation).concat(' pessoas!')
+// Retornando a função, deveria retornar o resultado
+function addPerson(person) {
+  if ((this.lotation + person) > this.seats && (this.seats - this.lotation) > 0) {
+    return this.lotation = ('Só cabem '.concat(this.seats - this.lotation).concat(' pessoas!'))
   }
-
-  if ((person + this.lotation) > this.seats) {
-    return 'O carro já está lotado!';
+  if ((this.lotation + person) > this.seats) {
+    return this.lotation = 'O carro já está lotado!';
   }
-
   this.lotation += person;
-  return 'Já temos '.concat(this.addPerson).concat(' pessoas no carro!');
-},
+  return person = ('Já temos '.concat(this.addPerson).concat(' pessoas no carro!'));
+};
+
+function resetCar() {
+  this.lotation = 0;
+};
+
+console.log(car.getColor());
+console.log(car.changeColor('Black'));
+console.log(car.getBrand());
+console.log(car.getModel());
+console.log(car.getBrandModel());
+// resetCar();
+console.log(car.addPerson(2));
+

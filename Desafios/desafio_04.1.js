@@ -4,11 +4,11 @@
   equivalente booleano para o valor passado no argumento for `true`, ou `false`
   para o contrário.
 */
-var isTruthy = (function () {
+var isTruthy = (function() {
   var valueIs;
 
   return {
-    changeValue: function (value) {
+    changeValue : function(value) {
       valueIs = value;
       return !!valueIs;
     }
@@ -51,52 +51,55 @@ console.log(isTruthy.changeValue('Uener'))
   - `assentos` - Number - cinco por padrão
   - `quantidadePessoas` - Number - zero por padrão
 */
-var car = {
-  brand: 'Wolksvagem',
-  model: 'Fox Rock'.concat("'") + 'in Rio',
-  plate: '1R0-NM4N',
-  year: 2023,
-  color: 'Green',
-  howManyDoors: 5,
-  seats: 5,
-  capacity: 0
-};
-
+var factory = (function() {
+  var car = {
+    brand: 'Wolksvagem',
+    model: 'Golf',
+    plate: '1R0-NM4N',
+    year: 2023,
+    color: 'Green',
+    howManyDoors: 5,
+    seats: 5,
+    lotation: 0
+  }
+  return {
 
 /* 02.1 -
   Crie um método chamado `mudarCor` que mude a cor do carro conforme a cor passado por parâmetro.
 */
-car.changeColor = function (newColor) {
-  return this.color = newColor;
-};
+    changeColor : function(color) {
+      car.color = color;
+      return car.color;
+    },
 
 /* 02.2 -
   Crie um método chamado `obterCor`, que retorne a cor do carro.
 */
-car.getColor = function () {
-  return this.color;
-};
+    getColor : function(){
+      return car.color;
+    },
 
 /* 02.3 -
   Crie um método chamado `obterModelo` que retorne o modelo do carro.
 */
-car.getModel = function () {
-  return this.model;
-};
+    getModel : function() {
+      return car.model;
+    },
 
 /* 02.4 -
   Crie um método chamado `obterMarca` que retorne a marca do carro.
 */
-car.getBrand = function () {
-  return this.brand;
-};
+    getBrand : function() {
+      return car.brand;
+    },
 
 /* 02.5 -
   Crie um método chamado `obterMarcaModelo`, que retorne: "Esse carro é um [MARCA] [MODELO]" Para retornar os valores de marca e modelo, utilize os métodos criados.
 */
-car.getBrandModel = function () {
-  return 'Esse carro é um '.concat(this.brand).concat(' ').concat(this.model).concat('.');
-}
+    getBrandModel : () => {
+      return ('Esse carro é um ' + car.brand + ' ' + car.model + '.');
+    },
+
 /* 02.6 -
   Crie um método que irá adicionar pessoas no carro. Esse método terá as
   seguintes características:
@@ -106,54 +109,59 @@ car.getBrandModel = function () {
   - Se ainda houverem lugares no carro, mas a quantidade de pessoas passadas por parâmetro for ultrapassar o limite de assentos do carro, então você deve mostrar quantos assentos ainda podem ser ocupados, com a frase: "Só cabem mais [QUANTIDADE_DE_PESSOAS_QUE_CABEM] pessoas!"
   - Se couber somente mais uma pessoa, mostrar a palavra "pessoa" no retorno citado acima, no lugar de "pessoas".
 */
-car.addPerson = function (person) {
-  this.capacity += person;
-  if (((this.capacity + person) > this.seats) && ((this.capacity + person) < this.seats)) {
-    return 'Só cabem mais '.concat(this.seats - person).concat(' pessoas no carro!')
-  } else if ((this.capacity + person) == 5) {
-    return 'O carro está lotado!';
-  } else if (((this.capacity + person) > 0) && ((this.capacity + person) < 5)) {
-    return 'Já temos '.concat(this.capacity).concat(' Pessoas no Carro!');
-  }
-  // return this.capacity;
-}
+    addPerson : function(value) {
+      for (car.lotation  = value; car.lotation  <=5 ; car.lotation ++) {
+        if (car.lotation > 1){
+          return ('Agora tem ' + car.lotation + ' pessoas dentro do carro.')
+        }else if (car.lotation = 5){
+          return ('O carro esta lotado.')
+        }else if(car.lotation > 5){
+          return ('Quantidade Inválida, no carro só cabem 5 pessoas!')
+        }
+        break;
+      }
+    }
 
+}
+}())
+
+factory.addPerson(2)//'Agora tem 2 pessoas dentro do carro.'
 /*
   Agora vamos verificar algumas informações do carro. Para as respostas abaixo, utilize sempre o formato de invocação do método (ou chamada da propriedade), adicionando comentários _inline_ ao lado com o valor retornado, se o método retornar algum valor.
 
   Qual a cor atual do carro?
 */
-
+console.log('A cor atual do carro é: ' + factory.getColor())
 
 // Mude a cor do carro para vermelho.
-car.changeColor('Black');
+console.log(factory.changeColor('Blue'))
 
 // E agora, qual a cor do carro?
-console.log(car.getColor());
+console.log('A cor do carro agora é: ' + factory.changeColor('Blue'))
 
 // Mude a cor do carro para verde musgo.
-car.changeColor('Verde Musgo');
+console.log(factory.changeColor('Moss Green'))
 
 // E agora, qual a cor do carro?
-console.log(car.getColor());
+console.log('A cor do carro agora é: ' + factory.changeColor('Moss Green'))
 
 // Qual a marca e modelo do carro?
-console.log(car.getBrandModel());
+console.log(factory.getBrandModel())
 
 // Adicione 2 pessoas no carro.
-console.log(car.addPerson(2))
+factory.addPerson(2)//'Agora tem 2 pessoas dentro do carro.'
 
 // Adicione mais 4 pessoas no carro.
-console.log(car.addPerson(4));
+factory.addPerson(4)//'Agora tem 4 pessoas dentro do carro.'
 
 // Faça o carro encher.
-// console.log(car.addPerson(5));
+factory.addPerson(5)//'Agora tem 2 pessoas dentro do carro.'
 
 // Tire 4 pessoas do carro.
-// console.log(car.addPerson(-4));
+factory.addPerson(-4)//'Agora tem 2 pessoas dentro do carro.'
 
 // Adicione 10 pessoas no carro.
-// console.log(car.addPerson(10));
+factory.addPerson(10)//'Quantidade Inválida, no carro só cabem 5 pessoas!'
 
 // Quantas pessoas temos no carro?
-// console.log(car.capacity);
+factory.addPerson(10)//'Quantidade Inválida, no carro só cabem 5 pessoas!'

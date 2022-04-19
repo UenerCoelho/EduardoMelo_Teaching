@@ -16,22 +16,22 @@ var any = {};
 var pessoa = {
   nome: 'Uemer',
   sobreNome: 'Coelho',
-  sexo: 'Masculino',
+  sexo: 'Feminino',
   idade: 38,
   altura: 1.84,
   peso: 98,
   andando: false,
   caminhouQuantosMetros: 0
-}
+};
 
 /* 01:
   Adicione um método ao objeto `pessoa` chamado `fazerAniversario`.
   O método deve alterar o valor da propriedade `idade` dessa pessoa,
   somando `1` a cada vez que for chamado.
 */
- pessoa.fazerAniversario = function() {
-   return this.idade += 1;
- }
+pessoa.fazerAniversario = function () {
+  return this.idade += 1;
+}
 
 /* 02:
   Adicione um método ao objeto `pessoa` chamado `andar`, que terá as seguintes
@@ -43,15 +43,15 @@ var pessoa = {
   - Ele deverá modificar o valor da propriedade `andando` para o valor
   booleano que representa "verdadeiro";
 */
-pessoa.andar = function(metros) {
+pessoa.andar = function (metros) {
   return this.caminhouQuantosMetros += metros;
 };
 
-pessoa.andou = function()  {
+pessoa.andou = function () {
   andou = pessoa.andar;
   if (andou) {
     return this.andando = true;
-  }else {
+  } else {
     return this.andando = false;
   };
 };
@@ -60,7 +60,7 @@ pessoa.andou = function()  {
   Adicione um método ao objeto `pessoa` chamado `parar`, que irá modificar o valor
   da propriedade `andando` para o valor booleano que representa "falso".
 */
-pessoa.parar = function() {
+pessoa.parar = function () {
   this.caminhouQuantosMetros = pessoa.andar(0);
 };
 
@@ -68,7 +68,7 @@ pessoa.parar = function() {
   Crie um método chamado `nomeCompleto`, que retorne a frase:
   - "Olá! Meu nome é [NOME] [SOBRENOME]!"
 */
-pessoa.nomeCompleto = function() {
+pessoa.nomeCompleto = function () {
   return ('Olá! Meu nome é '.concat(this.nome).concat(' ').concat(this.sobreNome).concat('!'));
 };
 
@@ -76,7 +76,7 @@ pessoa.nomeCompleto = function() {
   Crie um método chamado `mostrarIdade`, que retorne a frase:
   - "Olá, eu tenho [IDADE] anos!"
 */
-pessoa.mostrarIdade = function() {
+pessoa.mostrarIdade = function () {
   return ('Olá, eu tenho '.concat(this.idade).concat(' anos!'));
 };
 
@@ -84,8 +84,7 @@ pessoa.mostrarIdade = function() {
   Crie um método chamado `mostrarPeso`, que retorne a frase:
   - "Eu peso [PESO]Kg."
 */
-
-pessoa.mostrarPeso = function() {
+pessoa.mostrarPeso = function () {
   return ('Eu peso '.concat(this.peso).concat('kg.'));
 };
 
@@ -93,7 +92,7 @@ pessoa.mostrarPeso = function() {
   Crie um método chamado `mostrarAltura` que retorne a frase:
   - "Minha altura é [ALTURA]m."
 */
-pessoa.mostrarAltura = function() {
+pessoa.mostrarAltura = function () {
   return ('Minha altura é '.concat(this.altura).concat('m.'));
 };
 
@@ -178,7 +177,38 @@ console.log(pessoa.andou(pessoa.andar));
   - Se a quantidade de metros caminhados for igual a `1`, então a palavra que deve conter no retorno da frase acima é "metro" no lugar de "metros".
   - Para cada validação, você irá declarar uma variável localmente (dentro do método), que será concatenada com a frase de retorno, mostrando a resposta correta, de acordo com os dados inseridos no objeto.
 */
+pessoa.sexo = 'Masculino';
+pessoa.idade = 38;
+pessoa.caminhouQuantosMetros = 1000;
 
+pessoa.apresentacao = function () {
+  pessoa.apresentacao.genero = function () {
+    if (pessoa.sexo == 'Masculino') {
+      return pessoa.sexo = 'o';
+    } else if (pessoa.sexo == 'Feminino') {
+      return pessoa.sexo = 'a';
+    };
+  },
+
+    pessoa.apresentacao.sp = function () {
+      if (pessoa.idade > 1) {
+        return pessoa.idade = ' anos, ';
+      } else if (pessoa.idade = 1) {
+        return pessoa.idade = ' ano, '
+      };
+    },
+
+    pessoa.apresentacao.caminhado = function () {
+      if (pessoa.caminhouQuantosMetros > 1) {
+        return pessoa.caminhouQuantosMetros = ' metros!';
+      } else if (pessoa.caminhouQuantosMetros = 1) {
+        return pessoa.caminhouQuantosMetros = ' metro!'
+      };
+    };
+
+  return ('Olá, eu sou '.concat(pessoa.apresentacao.genero()).concat(' ').concat(pessoa.nome).concat(' ').concat(pessoa.sobreNome).concat(', tenho ').concat(pessoa.idade).concat(pessoa.apresentacao.sp()).concat(pessoa.altura).concat('m, meu peso é ').concat(pessoa.peso).concat('kg, e, só hoje, eu já caminhei ').concat(pessoa.caminhouQuantosMetros).concat(pessoa.apresentacao.caminhado()));
+};
 
 
 // Agora, apresente-se ;)
+console.log(pessoa.apresentacao());
