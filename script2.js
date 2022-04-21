@@ -5,8 +5,26 @@
 var prompt = require("prompt-sync")();
 
 (function (prompt) {
-	'use strict';
+  'use strict';
 	
+  var pessoa = {
+    nome: null, // String
+    idade: null, // Number
+    sexo: null, // M - Masculino, F - Feminino (String)
+    cargo: null, // String
+    salario: null, // Number
+    endereço: {
+      cep: null, // String
+      estado: null, // String
+    },
+    departamento: {
+      nome: null // String
+      responsavel: {
+        nome: null, // String
+        id: null // Number
+      },
+    }
+  };
   
   var concional = null;
   
@@ -36,24 +54,6 @@ var prompt = require("prompt-sync")();
     pessoa.estadoCivil = prompt('Informe o Estado Civil: ');
   } while (concional)
 
-  var pessoa = {
-    nome: null, // String
-    idade: null, // Number
-    sexo: null, // M - Masculino, F - Feminino (String)
-    cargo: null, // String
-    salario: null, // Number
-    endereço: {
-      cep: null, // String
-      estado: null, // String
-    },
-    departamento: {
-      nome: null // String
-      responsavel: {
-        nome: null, // String
-        id: null // Number
-      },
-    }
-  };
 	
 	console.log(pessoa);
 
