@@ -14,7 +14,30 @@ var prompt = require("prompt-sync")();
   var pessoa = {
     nome: null, // String
     idade: null, // Number (conversão de string para number através de função || get/set) 
+    _idade: null,
+    get idade() {
+      return this.idade;
+    },
+
+    set idade(idade) {
+      var idade = Number(idade);
+      if (idade <= 0) throw new Error ('Idade menor ou igual 0');
+      this._idade = idade;
+    },
     sexo: null, // M - Masculino, F - Feminino (String) (validação através de função || get/set)
+    _sexo: null,
+    get sexo() {
+      return this.sexo;
+    },
+
+    set sexo(sexo) {
+      var sexo = String(sexo);
+      if (sexo == 'M' || sexo == 'F') {
+        return this._sexo = sexo;
+      }
+      if (sexo != 'M' || sexo != 'F') throw new Error ('Digite apenas M ou F');
+      this._sexo = sexo;
+    },
     cargo: null, // String
     salario: null, // Number
     endereco: {
@@ -27,7 +50,8 @@ var prompt = require("prompt-sync")();
         nome: null, // String
         id: Number // Number
       },
-    }
+    },
+    
   };
 
   do {
