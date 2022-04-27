@@ -2,6 +2,15 @@
   Cadastrar 5 Funcionários diferentes e armazená-las dentro de um array, tem que cadastrar 5 vezes e depois encerrar com a resposta
 */
 
+//  Cadastro de produtos;
+
+var produto = {
+  id: null, // Number
+  descricao: null, // String
+  valor: null, // Number tem q ser positivo
+  vendedor: funcionario // iterar os funcionário pelo nome, caso contrário, de erro
+}
+
 var prompt = require("prompt-sync")();
 
 (function (prompt) {
@@ -11,9 +20,20 @@ var prompt = require("prompt-sync")();
 
   var funcionarios = [];
 
+  // 1- função pura (só depende dela mesmo) 2 - função impura (depende outras)
+  function buscarFuncionarioPorNome(nome) {
+    // for (let funcionario of funcionarios)
+    // funcionarios.forEach(fn)
+    for (var index = 0; index < funcionários.length; index += 1) {
+      var funcionario = funcionarios[index];
+      return funcionario;
+    }
+  //   funcionarios.indexOf('');
+  //   this.nome = nome;
+  // }
   var pessoa = {
     nome: null, // String
-    idade: null, // Number (conversão de string para number através de função || get/set) 
+    // idade: null, // Number (conversão de string para number através de função || get/set) 
     _idade: null,
     get idade() {
       return this.idade;
@@ -21,10 +41,10 @@ var prompt = require("prompt-sync")();
 
     set idade(idade) {
       var idade = Number(idade);
-      if (idade <= 0) throw new Error ('Idade menor ou igual 0');
+      if (idade <= 0) throw new Error ('Idade Digite uma idade Válida');
       this._idade = idade;
     },
-    sexo: null, // M - Masculino, F - Feminino (String) (validação através de função || get/set)
+    // sexo: null, // M - Masculino, F - Feminino (String) (validação através de função || get/set)
     _sexo: null,
     get sexo() {
       return this.sexo;
@@ -32,11 +52,13 @@ var prompt = require("prompt-sync")();
 
     set sexo(sexo) {
       var sexo = String(sexo);
-      if (sexo == 'M' || sexo == 'F') {
-        return this._sexo = sexo;
-      }
-      if (sexo != 'M' || sexo != 'F') throw new Error ('Digite apenas M ou F');
-      this._sexo = sexo;
+      // if (sexo === 'M' || sexo === 'F') {
+      //   return this._sexo = sexo;
+      // }
+      if (sexo !== 'M' && sexo !== 'F') throw new Error ('Digite apenas M ou F')
+
+      this._sexo = sexo
+
     },
     cargo: null, // String
     salario: null, // Number
@@ -57,7 +79,7 @@ var prompt = require("prompt-sync")();
   do {
     console.log('Cadastro de Funcionário');
 
-    var menu = prompt('Informe o nome [1] Cadastrar Funcionário [2] Sair: ');
+    var menu = prompt('Informe o nome [1] Cadastrar Funcionário [2] Cadastrar Produto e [9] Sair: ');
 
     switch (menu) {
       case '1':
@@ -79,6 +101,11 @@ var prompt = require("prompt-sync")();
 
         break;
       case '2':
+        produto.id = prompt('')
+        produto.descricao = prompt('')
+        produto.valor = prompt('')
+        break;
+      case '9':
         console.log('Tchau-brigado')
         condicional = false;
         break;
