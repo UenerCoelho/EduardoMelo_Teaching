@@ -2,14 +2,18 @@
   Cadastrar 5 Funcionários diferentes e armazená-las dentro de um array, tem que cadastrar 5 vezes e depois encerrar com a resposta
 */
 
-//  Cadastro de produtos;
+/*  * Cadastro de produtos
+    * Cadastrar o produto e suas especificações
+    * Iterar o produto com setor e funcionário específico
+    * Realizar a buscar do determinado funcionário, durante o cadastro do produto, ou seja, qndo for cadastrar o Produto e itera-lo com o funcionário, verificar se o funcionário esta cadastrado e caso não dê erro e retorne com pedido de cadastre novamente.
+*/
 
 var prompt = require("prompt-sync")();
 
 (function (prompt) {
   'use strict';
 
-  var condicional = true;
+  var condicional = true;c
 
   var funcionarios = [];
 
@@ -29,7 +33,7 @@ var prompt = require("prompt-sync")();
   };
 
   // 1 - Função pura (só depende dela mesmo) 2 - função impura (depende de outras)
-  function buscarFuncionarioPorNome(pessoa.nome) {
+  function buscarFuncionarioPorNome() {
     for ( var index = 0; index < funciconarios.length; index += 1) {
       var funcionario = funcionarios[index];
       return funcionario;
