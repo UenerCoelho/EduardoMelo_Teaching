@@ -23,13 +23,7 @@ var prompt = require("prompt-sync")();
     id: null, // Number
     descricao: null, // String
     valor: null, // Number, tem que ser positivo
-    _vendedor: buscarFuncionarioPorNome //funcionario // Iterar com os funcionários, casa contrário de erro.
-    // get vendedor() {
-    //   return this.vendedor;
-    // },
-    // set vendedor(vendedor) {
-    //   var vendedor = String.push(funcionarios);
-    // }
+    _vendedor: buscarFuncionarioPorNome //funcionario // Iterar com os funcionários, caso contrário de erro.
   };
 
   // 1 - Função pura (só depende dela mesmo) 2 - função impura (depende de outras)
